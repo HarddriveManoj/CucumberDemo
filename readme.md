@@ -7,6 +7,12 @@ WestwingNow is a Java Automation project for automating tests using Cucumber BDD
 
 This project requires docker to be installed with at least 1 Chrome instance running on it.
 
+## Setup Docker
+
+````
+#run with WSL prompt
+docker-compose -f docker-compose.yml up -d
+````
 
 ## Usage
 
