@@ -20,7 +20,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <version.junitapi>5.7.0</version.junitapi>
     <version.junit>4.13</version.junit>
     <version.selenium>3.141.59</version.selenium>
     <version.extentreports>5.0.3</version.extentreports>
@@ -33,17 +32,10 @@
 
 
   <dependencies>
-    <!--<dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${version.junitapi}</version>
-      <scope>test</scope>
-    </dependency>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${version.junit}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -75,12 +67,6 @@
       <artifactId>extentreports-cucumber5-adapter</artifactId>
       <version>${version.cucumberextentreports}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
 

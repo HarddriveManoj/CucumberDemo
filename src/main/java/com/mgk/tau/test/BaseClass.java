@@ -50,6 +50,9 @@ public abstract class BaseClass {
     @FindBy(xpath = "//*[@id=\"wishlistRoot\"]/div/div[4]/div/ul/li/div[2]/p[2]")
     WebElement wishListItem;
 
+    @FindBy(xpath = "//*[@id=\"wishlistRoot\"]/div/div[4]/div/ul/li/div[2]/button")
+    WebElement wishListButton;
+
     @FindBy(xpath = "//*[@id=\"wishlistRoot\"]/div/div[4]/div/ul/li/button")
     WebElement wishListRemove;
 

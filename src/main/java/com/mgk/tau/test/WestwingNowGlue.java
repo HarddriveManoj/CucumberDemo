@@ -16,6 +16,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -124,7 +126,8 @@ public class WestwingNowGlue extends BaseClass {
      */
     @Then("the product should be added to the wishlist")
     public void the_product_should_be_added_to_the_wishlist() {
-
+        wishListPage.click();
+        assertTrue(wishListButton.getText().length()!=0);
     }
 
     /**
@@ -132,7 +135,6 @@ public class WestwingNowGlue extends BaseClass {
      */
     @Then("^I go to the wishlist page$")
     public void i_go_to_the_wishlist_page() {
-
         wishListPage.click();
         System.out.println("Item in wishlist - " + wishListItem.getText());
 
