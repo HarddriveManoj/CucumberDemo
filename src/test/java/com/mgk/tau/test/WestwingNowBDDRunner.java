@@ -11,12 +11,13 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         tags = {"@SmokeTest"},
+        strict = true,
         plugin = {
-                /*"html:target/cucumber-html-report",
+                "html:target/cucumber-html-report",
                 "json:target/cucumber.json",
                 "pretty:target/cucumber-pretty.txt",
                 "usage:target/cucumber-usage.json",
-                "junit:target/cucumber-results.xml",*/
+                "junit:target/cucumber-results.xml",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         }
 )

@@ -1,22 +1,27 @@
 package com.mgk.tau.test;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Properties;
 
+/***
+ * Base Class to hold the generic configuration for the project
+ */
 public abstract class BaseClass {
+
+
     WebDriver webDriver;
     WebDriverWait webDriverWait;
     String baseURL, nodeURL;
     Properties props = new Properties();
+
+    /**
+     * FindBy declarations
+     */
 
     @FindBy(xpath = "//*[@id=\"onetrust-accept-btn-handler\"]")
     WebElement cookieAccept;
@@ -48,8 +53,11 @@ public abstract class BaseClass {
     @FindBy(xpath = "//*[@id=\"wishlistRoot\"]/div/div[4]/div/ul/li/button")
     WebElement wishListRemove;
 
+    @FindBy(xpath = "//*[@id=\"wishlistRoot\"]/div/div[4]/div/ul/div/div[1]/p[1]")
+    WebElement emptyWishListCheck;
+
     By searchResults = By.xpath("//div[starts-with(@class, 'CrossCategoryNavigation')]");
 
-    By loginform =  By.xpath("//*[@id=\"app-root\"]/div/div[2]/div/div[1]/div/div[2]/form/div[1]/input");
+    By loginform = By.xpath("//*[@id=\"app-root\"]/div/div[2]/div/div[1]/div/div[2]/form/div[1]/input");
 
 }
