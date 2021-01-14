@@ -1,3 +1,5 @@
+![Java CI with Maven](https://github.com/HarddriveManoj/WestwingNow/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
+
 # WestwingNow
 
 WestwingNow is a Java Automation project for automating tests using Cucumber BDD framework.
