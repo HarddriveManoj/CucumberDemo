@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mgk.tau.test</groupId>
+  <artifactId>WestwingNow</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>WestwingNow</name>
+  <developers>
+    <developer>
+      <name>Manoj Kolhe</name>
+      <email>manojgkolhe@gmail.com</email>
+      <url>https://github.com/harddrivemanoj</url>
+    </developer>
+  </developers>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <version.junit>5.7.0</version.junit>
+    <version.testng>6.14.3</version.testng>
+    <version.selenium>3.141.59</version.selenium>
+    <version.extentreports>5.0.3</version.extentreports>
+    <version.webdrivermanager>4.2.0</version.webdrivermanager>
+    <version.surefire>2.22.1</version.surefire>
+    <version.cucumber>5.7.0</version.cucumber>
+    <version.cucumberextentreports>2.6.0</version.cucumberextentreports>
+  </properties>
+
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${version.junit}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${version.testng}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${version.selenium}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${version.cucumber}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>${version.cucumber}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${version.extentreports}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${version.webdrivermanager}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.grasshopper</groupId>
+      <artifactId>extentreports-cucumber5-adapter</artifactId>
+      <version>${version.cucumberextentreports}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${version.surefire}</version>
+        <configuration>
+          <includes>
+            <include>**/*Runner.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
