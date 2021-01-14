@@ -18,8 +18,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -33,8 +35,10 @@ public class WestwingNowGlue extends BaseClass {
      */
     @Before
     public void setConfiguration() throws IOException {
-        FileInputStream objfile = new FileInputStream("src\\test\\resources\\user.properties");
-        props.load(objfile);
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        File file = new File(classLoader.getResource("user.properties").getFile());
+        assertTrue(file.exists());
+        props.load(this.getClass().getResourceAsStream("/user.properties"));
         baseURL = props.getProperty("url");
         nodeURL = props.getProperty("hubUrl");
         WebDriverManager.chromedriver().setup();
