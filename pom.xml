@@ -20,7 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <version.junit>4.13</version.junit>
+    <version.junit>4.13.1</version.junit>
     <version.selenium>3.141.59</version.selenium>
     <version.extentreports>5.0.3</version.extentreports>
     <version.webdrivermanager>4.2.0</version.webdrivermanager>
