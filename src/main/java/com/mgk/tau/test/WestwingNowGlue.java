@@ -33,7 +33,7 @@ public class WestwingNowGlue extends BaseClass {
      */
     @Before
     public void setConfiguration() throws IOException {
-        FileInputStream objfile = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\user.properties");
+        FileInputStream objfile = new FileInputStream("src\\test\\resources\\user.properties");
         props.load(objfile);
         baseURL = props.getProperty("url");
         nodeURL = props.getProperty("hubUrl");
