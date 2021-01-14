@@ -11,7 +11,7 @@ This project requires docker to be installed with at least 1 Chrome instance run
 
 ````
 #run with WSL prompt
-docker-compose -f docker-compose.yml up -d
+docker-compose -f docker-grid.yml up -d
 ````
 
 ## Usage
