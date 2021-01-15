@@ -6,7 +6,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -16,22 +15,22 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.NoRouteToHostException;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.*;
 
 public class WestwingNowGlue extends BaseClass {
 
     /**
      * Cucumber @Before hook
+     *
      * @throws IOException
      */
     @Before
@@ -47,14 +46,18 @@ public class WestwingNowGlue extends BaseClass {
 
     /**
      * Given statement
+     *
      * @throws MalformedURLException
      */
     @Given("^I am on the WestwingNow home page$")
     public void i_am_on_the_WestwingNow_home_page() throws MalformedURLException {
 
         Capabilities chromeCapabilities = new ChromeOptions();
-        //webDriver = new RemoteWebDriver(new URL(nodeURL), chromeCapabilities);
-        webDriver = new ChromeDriver();
+        if(props.getProperty("mode").length()==0) {
+            throw new InternalError("No mode defined in user.properties");
+        }
+        webDriver = props.getProperty("mode").equalsIgnoreCase("local") ? new ChromeDriver() :
+                new RemoteWebDriver(new URL(nodeURL), chromeCapabilities);
         webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
@@ -69,6 +72,7 @@ public class WestwingNowGlue extends BaseClass {
 
     /**
      * When statement
+     *
      * @param inputText
      */
     @When("^I search for \\\"([^\\\"]*)\\\"$")
@@ -132,7 +136,7 @@ public class WestwingNowGlue extends BaseClass {
     @Then("the product should be added to the wishlist")
     public void the_product_should_be_added_to_the_wishlist() {
         wishListPage.click();
-        assertTrue(wishListButton.getText().length()!=0);
+        assertTrue(wishListButton.getText().length() != 0);
     }
 
     /**
