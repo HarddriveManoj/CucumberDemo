@@ -24,6 +24,14 @@ To run this project via command line:
 mvn -U clean test
 ```
 
+Configure Local vs Remote(Docker) mode
+
+Navigate to src -> test -> resources -> user.properties
+```bash
+#values: local, remote
+mode=local
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
