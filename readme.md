@@ -1,5 +1,7 @@
 ![Java CI with Maven](https://github.com/HarddriveManoj/WestwingNow/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
 
+(If the build status is failing, it is due to non-existence of the password in properties file. Please get in touch for further details.)
+
 # WestwingNow
 
 WestwingNow is a Java Automation project for automating tests using Cucumber BDD framework.
