@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import okhttp3.internal.http2.ErrorCode;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.net.NoRouteToHostException;
 import java.net.URL;
@@ -50,19 +52,26 @@ public class WestwingNowGlue extends BaseClass {
      * @throws MalformedURLException
      */
     @Given("^I am on the WestwingNow home page$")
-    public void i_am_on_the_WestwingNow_home_page() throws MalformedURLException {
+    public void i_am_on_the_WestwingNow_home_page() throws MalformedURLException, BaseException {
 
         Capabilities chromeCapabilities = new ChromeOptions();
         if(props.getProperty("mode").length()==0) {
-            throw new InternalError("No mode defined in user.properties");
+            throw new BaseException("No mode defined in user.properties, please use local or remote", ErrorCode.CONNECT_ERROR);
         }
-        webDriver = props.getProperty("mode").equalsIgnoreCase("local") ? new ChromeDriver() :
-                new RemoteWebDriver(new URL(nodeURL), chromeCapabilities);
-        webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        webDriver.manage().window().maximize();
-        PageFactory.initElements(webDriver, this);
-        webDriver.get(baseURL);
+        try
+        {
+            webDriver = props.getProperty("mode").equalsIgnoreCase("local") ? new ChromeDriver() :
+                    new RemoteWebDriver(new URL(nodeURL), chromeCapabilities);
+            webDriver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+            webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            webDriver.manage().window().maximize();
+            PageFactory.initElements(webDriver, this);
+            webDriver.get(baseURL);
+        } catch (Exception e) {
+            e.getMessage();
+            throw new BaseException("Please verify if the Docker is up and running also please check internet connection", ErrorCode.CONNECT_ERROR);
+        }
+
 
         webDriverWait = new WebDriverWait(webDriver, 30);
 
@@ -124,9 +133,13 @@ public class WestwingNowGlue extends BaseClass {
      */
     @When("^I log in with \\\"([^\\\"]*)\\\" credentials$")
     public void i_log_in_with_credentials(String args1) {
+        String pwd = props.getProperty("password");
         loginForm.click();
         userName.sendKeys(args1);
-        password.sendKeys(props.getProperty("password"));
+        if(pwd == null || pwd.length() == 0) {
+            throw new BaseException("Password not defined, please set appropriate user account password", ErrorCode.REFUSED_STREAM);
+        }
+        password.sendKeys(pwd);
         submitButton.submit();
     }
 
