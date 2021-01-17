@@ -5,6 +5,9 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 
+/**
+ * The type Westwing now bdd runner.
+ */
 @RunWith(Cucumber.class)
 @CucumberOptions(glue = "com.mgk.tau.test",
         features = "src/test/resources",

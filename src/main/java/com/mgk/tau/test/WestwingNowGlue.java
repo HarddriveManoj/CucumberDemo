@@ -28,12 +28,15 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
+/**
+ * The type Westwing now glue.
+ */
 public class WestwingNowGlue extends BaseClass {
 
     /**
      * Cucumber @Before hook
      *
-     * @throws IOException
+     * @throws IOException the io exception
      */
     @Before
     public void setConfiguration() throws IOException {
@@ -49,7 +52,8 @@ public class WestwingNowGlue extends BaseClass {
     /**
      * Given statement
      *
-     * @throws MalformedURLException
+     * @throws MalformedURLException the malformed url exception
+     * @throws BaseException         the base exception
      */
     @Given("^I am on the WestwingNow home page$")
     public void i_am_on_the_WestwingNow_home_page() throws MalformedURLException, BaseException {
@@ -82,7 +86,7 @@ public class WestwingNowGlue extends BaseClass {
     /**
      * When statement
      *
-     * @param inputText
+     * @param inputText the input text
      */
     @When("^I search for \\\"([^\\\"]*)\\\"$")
     public void i_search_for(String inputText) {
@@ -130,6 +134,8 @@ public class WestwingNowGlue extends BaseClass {
 
     /**
      * When statement
+     *
+     * @param args1 the args 1
      */
     @When("^I log in with \\\"([^\\\"]*)\\\" credentials$")
     public void i_log_in_with_credentials(String args1) {
@@ -173,6 +179,8 @@ public class WestwingNowGlue extends BaseClass {
     }
 
     /**
+     * Close activities.
+     *
      * @After hook
      */
     @After

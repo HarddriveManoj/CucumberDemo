@@ -12,11 +12,22 @@ public class BaseException extends RuntimeException {
 
     private final ErrorCode errorCode;
 
+    /**
+     * Instantiates a new Base exception.
+     *
+     * @param message   the message
+     * @param errorCode the error code
+     */
     public BaseException(String message, ErrorCode errorCode) {
         super(message);
         this.errorCode = errorCode;
     }
 
+    /**
+     * Gets error code.
+     *
+     * @return the error code
+     */
     public ErrorCode getErrorCode() {
         return errorCode;
     }
