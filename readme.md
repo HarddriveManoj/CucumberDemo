@@ -4,7 +4,7 @@
 
 # WestwingNow
 
-WestwingNow is a Java Automation project for automating tests using Cucumber BDD framework.
+WestwingNow is a demo Java Automation project for automating tests using Cucumber BDD framework.
 
 
 ## Prerequisites
